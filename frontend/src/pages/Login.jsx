@@ -78,6 +78,7 @@ const Login = () => {
         <div className={classes.item}>
           <TextField
             id="standard-basic"
+            type="password"
             label="Password"
             size="small"
             style={{ width: "100%" }}
