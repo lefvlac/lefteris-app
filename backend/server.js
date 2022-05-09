@@ -7,7 +7,7 @@ const cors = require("cors");
 const authentication = require("./routes/auth");
 const employers = require("./routes/employers");
 
-dotenv.config({ path: "./config/config.env" });
+dotenv.config({ path: ".env" });
 const app = express();
 app.use(cookieParser());
 app.use(cors());
@@ -17,9 +17,17 @@ app.use(
     extended: true,
   })
 );
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "frontend/build")));
+}
+
 app.use("/api/auth", authentication);
 app.use("/api/employers", employers);
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname), "frontend/build/index.html");
+});
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}.`.cyan.bold);
