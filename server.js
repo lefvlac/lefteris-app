@@ -4,6 +4,7 @@ const colors = require("colors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const path = require("path");
 const authentication = require("./routes/auth");
 const employers = require("./routes/employers");
 
