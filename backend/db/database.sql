@@ -1,4 +1,4 @@
-CREATE DATABASE employer_database;
+-- CREATE DATABASE employer_database;
 
 CREATE TABLE employer(
     employer_id SERIAL PRIMARY KEY,
